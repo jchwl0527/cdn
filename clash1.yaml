@@ -6,7 +6,6 @@ log-level: info
 external-controller: :9090
 proxies:
   - {name: Clash, server: 23.94.211.247, port: 23377, type: vmess, uuid: a10a424e-ade4-4a31-89df-0b36bdb06a1f, alterId: 0, cipher: auto, tls: false, skip-cert-verify: false, network: ws, ws-opts: {path: /, headers: {Host: 23.94.211.247}}, udp: true}
-  - {name: Clash 2, server: xn--v5z.ml, port: 23377, type: vmess, uuid: abbbfb12-486b-4838-af14-650b222c04af, alterId: 0, cipher: auto, tls: false, skip-cert-verify: false, network: ws, ws-opts: {path: /, headers: {Host: xn--v5z.ml}}, udp: true}
 proxy-groups:
   - name: 🚀 节点选择
     type: select
