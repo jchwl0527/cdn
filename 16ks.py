@@ -34,7 +34,7 @@ def get_page(ids):
         # 提取标题
         title = tree.xpath('/html/body/div[1]/div[1]/h1/text()')[0]
     except IndexError:
-        print(f'ID为{ids}的网页结构变化,xpath不正确,跳过')
+        print(f'{ids}为空。')
         return
 
     # 先检查本地是否有这个文件
@@ -72,12 +72,12 @@ def get_page(ids):
 
 if __name__ == '__main__':
     # 创建线程池,最大线程数16
-    pool = ThreadPoolExecutor(max_workers=16)
+    pool = ThreadPoolExecutor(max_workers=64)
 
-    for ids in range(1, 9999, 16):  # 每次采集16个
+    for ids in range(1, 9999, 64):  # 每次采集16个
         # 创建新的线程池
-        pool = ThreadPoolExecutor(max_workers=16)
+        pool = ThreadPoolExecutor(max_workers=64)
         # 将任务提交给线程池
-        results = list(pool.map(get_page, range(ids, ids + 16)))
+        results = list(pool.map(get_page, range(ids, ids + 64)))
         # 等待所有线程完成
     pool.shutdown()
